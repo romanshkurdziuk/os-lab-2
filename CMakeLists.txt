@@ -22,6 +22,7 @@ add_subdirectory(tests/catch2)
 add_executable(run_tests
     tests/tests.cpp
     src/logic.cpp
+    src/core.cpp
 )
 
 target_link_libraries(run_tests PRIVATE Catch2::Catch2WithMain)

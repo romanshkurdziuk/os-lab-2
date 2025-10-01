@@ -2,6 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/catch_approx.hpp>
 #include "logic.h"
+#include "core.h"
 #include <vector>
 #include <limits>
 
@@ -65,7 +66,6 @@ TEST_CASE("FunctionfindAvarage tests", "[average]")
         
         AvarageResult actual = FunctionfindAvarage(vec);
         
-        // Для double используем Approx для безопасного сравнения
         REQUIRE(actual.avarage == Catch::Approx(expected.avarage));
     }
 
@@ -86,17 +86,37 @@ TEST_CASE("FunctionfindAvarage tests", "[average]")
 
         AvarageResult actual = FunctionfindAvarage(vec);
 
-        // Approx справляется с неточнстями float
         REQUIRE(actual.avarage == Catch::Approx(expected.avarage).epsilon(0.001));
     }
     
     SECTION("Vector with negative numbers") 
     {
-        std::vector<int> vec = {-10, 10, 5}; // Сумма 5, среднее 5/3 ~= 1.666...
+        std::vector<int> vec = {-10, 10, 5};
         
         AvarageResult actual = FunctionfindAvarage(vec);
         double expectedValue = 5.0 / 3.0;
 
         REQUIRE(actual.avarage == Catch::Approx(expectedValue));
+    }
+}
+
+// Тест-сьют для всей core-логики в сборе
+
+TEST_CASE("Core Integration Test", "[core]") 
+{
+
+    SECTION("A typical array processing scenario") 
+    {
+        std::vector<int> initialArray = {10, 20, 5, 50, 15};
+        std::vector<int> finalArray_expected = {10, 20, 20, 20, 15};
+        CalculationResult expected;
+        expected.finalMinValue = 5;
+        expected.finalMaxValue = 50;
+        expected.finalAverageValue = 20.0;
+        expected.finalArray = finalArray_expected;
+        CalculationResult actual = processArrayWithThreads(initialArray);
+        REQUIRE(actual.finalMaxValue == expected.finalMaxValue);
+        REQUIRE(actual.finalAverageValue == Catch::Approx(expected.finalAverageValue));
+        REQUIRE(actual.finalArray == expected.finalArray);
     }
 }
