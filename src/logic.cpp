@@ -17,12 +17,12 @@ MinMax FunctionfindMinMax(const vector<int> &vec)
         {
             result.min = vec[i];
         }
-        Sleep(7);
+        Sleep(MIN_MAX_THREED_SLEEP);
         if (vec[i] > result.max)
         {
             result.max = vec[i];
         }
-        Sleep(7);
+        Sleep(MIN_MAX_THREED_SLEEP);
     }
     return result;
 }
@@ -39,7 +39,7 @@ Avarage FunctionfindAvarage(const vector<int> &vec)
     for (int i = 0; i < size; ++i)
     {
         sum += vec[i];
-        Sleep(12);
+        Sleep(AVERAGE_THREED_SLEEP);
     }
     Avarage result = {sum / size};
     return result;

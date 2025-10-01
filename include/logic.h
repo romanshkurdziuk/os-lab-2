@@ -2,6 +2,10 @@
 #define LOGIC_H
 
 #include <vector>
+
+const int MIN_MAX_THREED_SLEEP = 7;
+const int AVERAGE_THREED_SLEEP = 12;
+
 struct MinMax
 {
     int min;
