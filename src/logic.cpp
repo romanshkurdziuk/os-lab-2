@@ -1,16 +1,14 @@
 #include "logic.h"
 #include <windows.h>
-using namespace std;
 
-
-MinMax FunctionfindMinMax(const vector<int> &vec)
+MinMaxResult FunctionfindMinMax(const vector<int> &vec)
 {
     if (vec.empty())
     {
         return {0, 0};
     }
     int size = vec.size();
-    MinMax result = {vec[0], vec[0]};
+    MinMaxResult result = {vec[0], vec[0]};
     for (int i = 0; i < size; ++i)
     {
         if (vec[i] < result.min)
@@ -28,7 +26,7 @@ MinMax FunctionfindMinMax(const vector<int> &vec)
 }
 
 
-Avarage FunctionfindAvarage(const vector<int> &vec)
+AvarageResult FunctionfindAvarage(const vector<int> &vec)
 {
     if (vec.empty())
     {
@@ -41,6 +39,6 @@ Avarage FunctionfindAvarage(const vector<int> &vec)
         sum += vec[i];
         Sleep(AVERAGE_THREED_SLEEP);
     }
-    Avarage result = {sum / size};
+    AvarageResult result = {sum / size};
     return result;
 }

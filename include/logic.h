@@ -1,23 +1,25 @@
 #ifndef LOGIC_H
 #define LOGIC_H
 
+using namespace std;
+
 #include <vector>
 
 const int MIN_MAX_THREED_SLEEP = 7;
 const int AVERAGE_THREED_SLEEP = 12;
 
-struct MinMax
+struct MinMaxResult
 {
     int min;
     int max;
 };
 
-struct Avarage
+struct AvarageResult
 {
     double avarage;
 };
 
-MinMax FunctionfindMinMax(const std::vector<int> &vec);
-Avarage FunctionfindAvarage(const std::vector<int> &vec);
+MinMaxResult FunctionfindMinMax(const vector<int> &vec);
+AvarageResult FunctionfindAvarage(const vector<int> &vec);
 
 #endif // LOGIC_H
